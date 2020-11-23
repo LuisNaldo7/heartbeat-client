@@ -1,0 +1,24 @@
+{
+  "name": "heartbeat-client",
+  "version": "1.0.0",
+  "description": "heartbeat-client",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisNaldo7/Heartbeat-Client.git"
+  },
+  "author": "Nils Effinghausen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuisNaldo7/Heartbeat-Client/issues"
+  },
+  "homepage": "https://github.com/LuisNaldo7/Heartbeat-Client#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "heartbeats": "^5.0.1"
+  }
+}
