@@ -3,6 +3,7 @@ const axios = require('axios');
 
 id = process.argv[2]
 baseURL = process.argv[3]
+interval = process.argv[4]
 
 let heart = heartbeats.createHeart(1000);
 let http = axios.create({
@@ -10,7 +11,7 @@ let http = axios.create({
 });
 
 
-heart.createEvent(30, function(count, last) {
+heart.createEvent(interval, function(count, last) {
 
     http.get('/'+ id)
         .then(function (response) {
