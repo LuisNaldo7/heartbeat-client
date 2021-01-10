@@ -13,7 +13,7 @@ let http = axios.create({
 
 heart.createEvent(interval, function(count, last) {
 
-    http.get('/'+ id)
+    http.get('/pulse/beat/'+ id)
         .then(function (response) {
             console.log(response);
         })
