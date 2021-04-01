@@ -1,8 +1,8 @@
 FROM node:lts
 
-ENV ID="id"
-ENV URL="http://localhost:3000"
-ENV INTERVAL=30
+ENV HEARTBEAT_CLIENT_ID="518cb4b7-058b-44c1-9d4a-f05a546b4f21"
+ENV HEARTBEAT_CLIENT_INTERVAL=30
+ENV HEARTBEAT_SERVER_BASE_URL="http://localhost:3000"
 
 # Create app directory
 WORKDIR /app
@@ -15,4 +15,4 @@ RUN npm ci --only=production
 # Bundle app source
 COPY ./src ./src
 
-CMD [ "npm", "start", "${ID}", "${URL}", "${INTERVAL}"]
+CMD [ "npm", "start"]
