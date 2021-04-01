@@ -2,7 +2,7 @@
 
 ## Run
 
-    npm start "<ID>" "<URL>"
+    npm start
 
 ## Run in Docker
 
