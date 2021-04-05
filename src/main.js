@@ -12,9 +12,9 @@ heart.createEvent(process.env['HEARTBEAT_CLIENT_INTERVAL'], (count, last) => {
   http
     .get('/pulse/beat/' + process.env['HEARTBEAT_CLIENT_ID'])
     .then((response) => {
-      console.log(response);
+      console.info(response);
     })
     .catch((error) => {
-      console.log(error);
+      console.error(error);
     });
 });
