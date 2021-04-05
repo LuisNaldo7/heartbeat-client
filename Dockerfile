@@ -9,10 +9,14 @@ WORKDIR /app
 
 # Install app dependencies
 COPY package*.json ./
+COPY tsconfig*.json ./
 
 RUN npm ci --only=production
 
 # Bundle app source
 COPY ./src ./src
 
-CMD [ "npm", "start"]
+# Build app
+RUN npm run build
+
+CMD [ "node", "dist/main"]
