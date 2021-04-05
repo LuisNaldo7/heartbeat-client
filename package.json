@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/LuisNaldo7/Heartbeat-Client#readme",
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "heartbeats": "^5.0.1",
     "prettier": "^2.2.1"
