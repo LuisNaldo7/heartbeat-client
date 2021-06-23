@@ -15,10 +15,9 @@ heart.createEvent(
   process.env.HEARTBEAT_CLIENT_INTERVAL || fallback.HEARTBEAT_CLIENT_INTERVAL,
   (count: number) => {
     http
-      .get(
-        '/pulse/beat/' + process.env.HEARTBEAT_CLIENT_ID ||
-          fallback.HEARTBEAT_CLIENT_ID,
-      )
+      .post('/pulse/beat', {
+        guid: process.env.HEARTBEAT_CLIENT_ID || fallback.HEARTBEAT_CLIENT_ID,
+      })
       .then(() => {
         console.info('beat #' + count + ' succeeded');
       })
