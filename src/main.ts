@@ -17,12 +17,24 @@ heart.createEvent(
     http
       .post('/pulse/beat', {
         guid: process.env.HEARTBEAT_CLIENT_ID || fallback.HEARTBEAT_CLIENT_ID,
+        type: 'BEAT',
       })
-      .then(() => {
-        console.info('beat #' + count + ' succeeded');
+      .then((result) => {
+        if (result.data.res.status == 'ok') {
+          console.info('beat #' + count + ': ' + result.data.res.status);
+        } else {
+          console.info(
+            'beat #' +
+              count +
+              ': ' +
+              result.data.res.status +
+              ' - ' +
+              result.data.err,
+          );
+        }
       })
       .catch((error) => {
-        console.error('beat #' + count + ' failed (' + error + ')');
+        console.error('beat #' + count + ': failed - ' + error);
       });
   },
 );
