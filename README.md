@@ -1,6 +1,21 @@
 # Heartbeat-Client
 
+To monitor the online state of devices the Heartbeat-Client needs to be installed on the respective machine. It continuously sends notifications to the [Heartbeat-Server](https://github.com/LuisNaldo7/heartbeat-server).
 
+## Components
+
+[Heartbeat-Client](https://github.com/LuisNaldo7/heartbeat-client)
+
+[Heartbeat-Server](https://github.com/LuisNaldo7/heartbeat-server)
+
+[Heartbeat-Alert](https://github.com/LuisNaldo7/heartbeat-alert)
+
+[Heartbeat-Dashboard](https://github.com/LuisNaldo7/heartbeat-dashboard)
+
+![Diagram](https://github.com/LuisNaldo7/heartbeat-local-dev-env/blob/main/docs/components.png?raw=true)
+
+---
+A full integration can be set up using the [Local Development Environment](https://github.com/LuisNaldo7/heartbeat-local-dev-env).
 ## Run
 
 Copy .env.example to .env and adjust values.
