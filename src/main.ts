@@ -20,18 +20,8 @@ heart.createEvent(
         type: 'BEAT',
       })
       .then((result) => {
-        if (result.data.res.status == 'ok') {
-          console.info('beat #' + count + ': ' + result.data.res.status);
-        } else {
-          console.info(
-            'beat #' +
-              count +
-              ': ' +
-              result.data.res.status +
-              ' - ' +
-              result.data.err,
-          );
-        }
+          console.info('beat #' + count + ': successful');
+        
       })
       .catch((error) => {
         console.error('beat #' + count + ': failed - ' + error);
