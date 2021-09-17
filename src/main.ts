@@ -16,12 +16,12 @@ heart.createEvent(
   (count: number) => {
     http
       .post('/pulse', {
-        deviceId: process.env.HEARTBEAT_CLIENT_ID || fallback.HEARTBEAT_CLIENT_ID,
+        deviceId:
+          process.env.HEARTBEAT_CLIENT_ID || fallback.HEARTBEAT_CLIENT_ID,
         type: 'BEAT',
       })
       .then((result) => {
-          console.info('beat #' + count + ': successful');
-        
+        console.info('beat #' + count + ': successful');
       })
       .catch((error) => {
         console.error('beat #' + count + ': failed - ' + error);
