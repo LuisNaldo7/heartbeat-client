@@ -7,32 +7,39 @@ import date from 'date-and-time';
 dotenv.config();
 const MILLI_SECS = 1000;
 const heart = heartbeats.createHeart(MILLI_SECS);
+const interval = getInterval();
+
 const http = axios.create({
   baseURL:
     process.env.HEARTBEAT_SERVER_BASE_URL || fallback.HEARTBEAT_SERVER_BASE_URL,
+  timeout: interval,
 });
 
-heart.createEvent(
-  process.env.HEARTBEAT_CLIENT_INTERVAL || fallback.HEARTBEAT_CLIENT_INTERVAL,
-  (count: number) => {
-    http
-      .post('/pulse', {
-        deviceId:
-          process.env.HEARTBEAT_CLIENT_ID || fallback.HEARTBEAT_CLIENT_ID,
-        type: 'BEAT',
-      })
-      .then(() => {
-        console.info(getTimestamp() + ' - beat #' + count + ': successful');
-      })
-      .catch((error) => {
-        console.error(
-          getTimestamp() + ' - beat #' + count + ': failed - ' + error,
-        );
-      });
-  },
-);
+heart.createEvent(interval, (count: number) => {
+  http
+    .post('/pulse', {
+      deviceId: process.env.HEARTBEAT_CLIENT_ID || fallback.HEARTBEAT_CLIENT_ID,
+      type: 'BEAT',
+    })
+    .then(() => {
+      console.info(getTimestamp() + ' - beat #' + count + ': successful');
+    })
+    .catch((error) => {
+      console.error(
+        getTimestamp() + ' - beat #' + count + ': failed - ' + error,
+      );
+    });
+});
 
-function getTimestamp() {
+function getInterval(): number {
+  if (process.env.HEARTBEAT_CLIENT_INTERVAL) {
+    return parseInt(process.env.HEARTBEAT_CLIENT_INTERVAL);
+  }
+
+  return fallback.HEARTBEAT_CLIENT_INTERVAL;
+}
+
+function getTimestamp(): string {
   return date.format(
     new Date(),
     process.env.HEARTBEAT_CLIENT_DATE_FORMAT ||
