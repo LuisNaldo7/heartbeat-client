@@ -46,6 +46,6 @@ function getTimestamp(): string {
   );
 }
 
-function toMilliSec(val:number) : number {
+function toMilliSec(val: number): number {
   return val * 1000;
 }
