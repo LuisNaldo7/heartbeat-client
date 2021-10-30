@@ -24,12 +24,12 @@
   "dependencies": {
     "@types/date-and-time": "^0.13.0",
     "@types/node": "^14.17.21",
-    "axios": "^0.22.0",
+    "axios": "^0.24.0",
     "date-and-time": "^2.0.1",
     "dotenv": "^8.6.0",
     "heartbeats": "^5.0.1",
     "prettier": "^2.4.1",
-    "typescript": "^4.4.3"
+    "typescript": "^4.4.4"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.33.0",
