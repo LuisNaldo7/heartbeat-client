@@ -5,17 +5,16 @@ import { fallback } from './fallback-values';
 import date from 'date-and-time';
 
 dotenv.config();
-const MILLI_SECS = 1000;
-const heart = heartbeats.createHeart(MILLI_SECS);
-const interval = getInterval();
+const heart = heartbeats.createHeart(toMilliSec(1));
+const intervalInSec = getInterval();
 
 const http = axios.create({
   baseURL:
     process.env.HEARTBEAT_SERVER_BASE_URL || fallback.HEARTBEAT_SERVER_BASE_URL,
-  timeout: interval,
+  timeout: toMilliSec(intervalInSec),
 });
 
-heart.createEvent(interval, (count: number) => {
+heart.createEvent(intervalInSec, (count: number) => {
   http
     .post('/pulse', {
       deviceId: process.env.HEARTBEAT_CLIENT_ID || fallback.HEARTBEAT_CLIENT_ID,
@@ -45,4 +44,8 @@ function getTimestamp(): string {
     process.env.HEARTBEAT_CLIENT_DATE_FORMAT ||
       fallback.HEARTBEAT_CLIENT_DATE_FORMAT,
   );
+}
+
+function toMilliSec(val: number): number {
+  return val * 1000;
 }
