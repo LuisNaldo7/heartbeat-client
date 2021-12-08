@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:16.13.1
 
 ENV HEARTBEAT_CLIENT_ID="518cb4b7-058b-44c1-9d4a-f05a546b4f21"
 ENV HEARTBEAT_CLIENT_INTERVAL=10
@@ -9,9 +9,7 @@ ENV HEARTBEAT_SERVER_BASE_URL="http://localhost:3000"
 WORKDIR /app
 
 # Install app dependencies
-COPY package*.json ./
-COPY tsconfig*.json ./
-
+COPY package*.json tsconfig*.json ./
 RUN npm ci --only=production
 
 # Bundle app source
