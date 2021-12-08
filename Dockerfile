@@ -19,6 +19,9 @@ RUN npm run build
 # Run stage
 FROM node:16.13.1
 
+## Switch to less privileged user
+USER node
+
 ## Declare env vars
 ENV HEARTBEAT_CLIENT_ID="518cb4b7-058b-44c1-9d4a-f05a546b4f21"
 ENV HEARTBEAT_CLIENT_INTERVAL=10
