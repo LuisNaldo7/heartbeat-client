@@ -14,6 +14,8 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    env:
+      TAGS: luisnaldo7/heartbeat-client:dev
     steps:
       - name: Set environment for branch
         run: |
